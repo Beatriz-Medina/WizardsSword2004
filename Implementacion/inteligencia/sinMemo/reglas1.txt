@@ -1,0 +1,10 @@
+tieneHambre tieneComidaCerca Comer
+tieneHambre tieneComidaLejos MoverHaciaComida
+tieneHambre MoverAleatorio
+tieneSed tieneAguaCerca Beber
+tieneSed tieneAguaLejos MoverHaciaAgua
+tieneSed MoverAleatorio
+tieneCansancio Descansar
+tienePersonajeCerca Robar
+tienePersonajeLejos MoverHaciaPersonaje
+porDefecto MoverAleatorio

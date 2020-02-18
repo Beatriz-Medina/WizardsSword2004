@@ -1,0 +1,270 @@
+Juego de Rol
+
+(1) INTELIGENCIA
+	
+	Jugadores PJ's y PNJ's
+	
+	PJ's -> jugador humano usuario (no inteligencia)
+	PNJ's -> jugadores computacionales reactivos y deliberativos
+
+	Nivel de inteligencia según el tipo de jugador PNJ
+			
+	Inteligencia Reactiva: Método conductista de estímulo-respuesta con sistema de producción 
+			       estableciendo unas reglas de actuación.
+			
+	Inteligencia Deliberativa: Búsqueda para encontrar la mejor acción.
+			
+	Los PNJ's ya sean reactivos o deliberativos tendrán que tomar una decisión. Dicha decisión estará
+	basada en un sistema de producción (conjunto de reglas) o en búsquedas y heurísticas.
+
+	Sistema de producción:
+	
+		SI <condicion_1> Y <condicion_2> ... ENTONCES acción_1
+		SI <condicion_3> Y <condicion_4>... ENTONCES acción_2
+		.
+		.
+		.
+				
+		Las condiciones estarán formadas por los valores de los campos de la estructura que almacene 
+		las características de los jugadores. Es decir, se evaluarán las condiciones de la situación
+		como la posición de todos los personajes, el estado de los PJ's (sólo lo que sea visible al 
+		PNJ), el estado del PNJ, los objetos disponibles, etc... para dar como resultado una acción
+		de las mencionadas anteriormente.
+		
+	Búsquedas y heurísticas:
+		
+		Los PNJ's deliberativos tendrán que tomar una decisión de forma más compleja que los
+		reactivos. Tendrán que analizar la situación en la que se encuentren y ser capaces de
+		encontrar una acción correcta para cada caso. Incluso pueden ser capaces de aprender con
+		los resultados que obtengan en cada una de sus acciones. En un primer momento actuarán como
+		reactivos, después irán aprendiendo viendo si la siguiente decisión a tomar será beneficiosa
+		o no en función de su historial.
+
+(2) REGLAS DE ROL (basado en el juego RuneQuest)
+
+	Estructura jugador PJ y PNJ:	
+
+		Campos:	
+		
+		Nombre  (NOM):      Nombre del PJ. Proporcionado por el usuario. 
+		
+		Especie (ESP):      Especie a la que pertenece el PJ (humano, elfo, enano, hobbit).
+				    Seleccionado por el usuario.
+
+		Género  (GEN):      Género al que pertenece el PJ (masculino, femenino).
+				    Seleccionado por el usuario.
+
+		Fuerza  (FUE):      Fuerza del PJ. Influye en el daño que puede causar, y en el tipo de 
+				    armadura, armas, u otros objetos que pueda llevar.
+				    Puede aumentarse como max CON+TAM.
+				    Valor inicial: 3D6.
+
+		Constitución (CON): Salud del PJ. Influye en la cantidad de daño que puede soportar.
+				    Puede aumentarse como max FUE+TAM.
+				    Valor inicial: 3D6.
+
+		Tamaño (TAM):	    Tamaño del PJ. Influye para inflingir y soportar daño. No puede 
+				    modificarse.
+				    Valor inicial: 2D6 + 6.
+
+		Inteligencia (INT): Inteligencia del PJ. Influye en el número de conjuros a memorizar.
+				    No puede modificarse.
+				    Valor inicial: 2D6 + 6.
+
+		Destreza (DES):     Destreza del PJ. Determina la rapidez de las acciones del PJ.		
+				    Puede aumentarse como max hasta DES*1.5.
+				    Valor inicial: 3D6.
+
+		Puntos Mágicos (PM): Puntos mágicos del PJ. Determina el nivel de energía mágica para lanzar
+				     hechizos. Cada vez que se lanza un hechizo se va decrementando su valor.
+				     Cuando llega a 0 no puede lanzarse ningún hechizo. Se recupera su
+				     valor en determinadas fuentes de energía mágica que consumen varios
+				     turnos. Inicialmente, su valor está a 3D6 y éste será su máximo.
+
+		Puntos Golpe (PG):  Puntos de golpe del PJ. Indica cuánto daño es capaz de soportar el PJ.
+				    Es la media alta de CON y TAM. Cuando esté a 0 el PJ muere.
+				    Los objetos inanimados también tienen puntos de golpe. Dichos
+				    puntos son necesarios para destruir dicho objeto.
+
+		Energía (ENE):	     Energía del PJ. Determina el nivel de energía del personaje. Conforme
+				     transcurre el juego, el personaje va perdiendo dicha energía y ha
+				     de recuperarla mediante descanso, comida, etc...
+				     Su valor inicial es la suma de FUE y CON.
+				     Cada dos turnos pierde un punto de energía. Si ha hecho un esfuerzo
+				     mayor, perderá más. Cuando lleguen a 0 empezará a perder un punto
+				     de golpe cada turno y en todas sus tiradas.
+
+		
+		Puntos de daño (PD):	Puntos de daño del PJ. Cada arma tiene asociado un valor de daño.
+					En caso de que el PJ no tenga ningún arma se considerarán unos puntos
+				        básicos de arma natural (1D6).				
+	
+		Puntos de armadura (PA): Puntos de armadura del PJ. Cada armadura tiene unos puntos de 
+					 protección. Cuando el jugador no tiene ninguna armadura, se 
+					 considerarán unos puntos básicos de armadura natural (3puntos).
+					 El daño que recibe un personaje es la diferencia entre sus puntos
+					 de armadura y los puntos de daño + modificador de daño del contrario.		
+					 El daño que recibe el personaje se le resta a sus puntos de golpe.					 
+					 Los objetos tienen también puntos de armadura. Cuando se rebasan
+					 se ven afectados sus puntos de golpe.
+
+		Modificador de daño (MD): Modificador de daño del PJ. Indica cuánto daño ha causado el PJ.
+					  Su valor puede obtenerse con los dados a través de la tabla 
+					  correspondiente sumando FUE + TAM. Al realizar un ataque se le suma
+					  al daño hecho por el arma este modificador. Se añadiría sólo la
+					  mitad si el arma fuese arrojadiza.
+		
+		Modificador de habilidad (MH): Modificador de habilidad del PJ. Se calcula en función de las
+					       características que ejercen una determinada influencia. 
+
+		Posición (POS):	    Posición del PJ en coordenadas (x,y) del mundo. Cada PJ verá su propio
+				    entorno. 
+				    Valor inicial: Posición aleatoria en el mundo.
+
+		Equipo (EQU):   Lista de objetos limitada que puede llevar el PJ. Cada índice de la lista
+				se asociará con una parte del cuerpo del personaje:
+				Ej.
+				1- mano izquierda	- objeto: 1 escudos de algún tipo
+				2- mano derecha		- objeto: 1 espada o hacha, etc...
+				3- tronco		- objeto: malla protectora de agún tipo
+				4- bolsillos 		- objeto: monedas de oro, llaves, pergaminos, etc...
+	
+		 
+		Para realizar con éxito una habilidad, cada personaje tiene que tirar 1d100. Si el valor
+		resultante es menor o igual que el % asociado a la habilidad, la consigue realizar con éxito.
+		Cuando se enfrentan dos habilidades, el atacante tendrá que obtener un valor menor o igual
+		a la diferencia entre % habilidad defensiva y ofensiva para tener éxito, en caso de que
+		el atacado haya tenido éxito previamente. Si el atacado no tiene éxito, el atacante sólo
+		tiene que obtener una tirada de éxito simple sin realizar ninguna diferencia.
+
+		Las habilidades pueden aumentar su %. Para ello es necesario un entrenamiento. El entrenamiento
+		consiste en realizar alguna misión que proponga algún PNJ que hará de maestro.
+		Cuando se consiga dicha misión, se incrementará la habilidad correspondiente en 2 percentiles.
+		El entrenamiento supone un coste. A medida que se mejora la habilidad el coste incrementa.
+
+		Las características pueden aumentarse mediante estudio. El estudio consiste en perder varios
+		turnos en centros especializados que incrementan 1 percentil a la característica correspondiente.
+		El estudio supone una pérdida considerable de energía.		
+
+		Otro aspecto a tener en cuenta es el de enfrentar características entre sí. A este aspecto
+		se le llama resistencia. Ejemplos de ello es la potencia de un veneno contra la constitución
+		de un personaje, enfrentamiento de puntos mágicos, forzar puertas o muros, levantar objetos...
+		Para obtener su valor es necesario utilizar la tabla de resistencia, tirar 1d100 y obtener
+		en él un valor menor o igual al de la tabla.
+
+		Las caídas producen 1D6 de daño.
+		La asfixia produce 1D8 de daño.
+		El fuego produce de 1D6 a 13D6 de daño (según sea una llama(min) o un pozo de lava(max)).
+		Los venenos producen toda su potencia si el personaje no sale exitoso de su tirada de 
+		resistencia, en otro caso su efecto es atenuado a la mitad.
+		Cada veneno tiene un antídoto.
+
+		Las armas y armaduras se comparan en tiendas.
+		Las monedas de oro se obtienen robando o buscando en cofres.
+		Las pociones se obtienen buscando.
+		Los pergaminos de magia se obtienen en tiendas o buscando.
+
+		Cada jugador puede llevar un sólo escudo y una sóla arma de ataque. Cuando coja otro nuevo
+		se sustituirá por el que tenía.
+		Lo mismo pasa cuando se supera el máximo número de pergaminos a memorizar limitado por el
+		valor de INT.
+
+		Acciones: 
+		- Atacar
+		- Realizar un hechizo
+		- Moverse a una posición no obstaculizada
+		- Coger algún objeto
+		- Usar algún objeto
+		- Abrir/Cerrar puertas
+		- Acciones relacionadas con las habilidades
+		- Comprar algún objeto
+		- Recuperar energía
+		- Recuperar fuerza mágica
+		- Estudiar/Entrenar
+	
+(3) CUESTIONES:
+ 		
+	¿Para qué sirve la inteligencia en los PNJ's?
+	Para obtener un determinado objetivo, ya sea atacar a algún PJ, moverse a una posición o interactuar
+	con él de alguna manera. Dependerá del tipo de PNJ.
+
+	Los datos del mundo ¿dónde estarán?
+	En memoria.
+
+	¿Cómo se dibuja el mundo y los cambios?
+	El mundo se dibuja cargando en memoria una estructura con dicha información. Cuando los 
+	jugadores actuan modifican el mundo, por tanto modifican la memoria y se refresca la pantalla con 
+	los cambios.
+	Habrá que hacer búsquedas en memoria para localizar el objeto que ha cambiado y modificar
+	sus parámetros.
+
+	¿Cómo se organiza la estructura de datos?
+	En listas:
+
+	- Lista para todas las casillas del mundo, indicando sus coordenadas, su tipo de terreno,
+	  el identificador del objeto que contengan, etc...
+	
+	- Lista para los PJ's y PNJ's indicando sus características, coordenadas, etc...
+	
+	- Lista de objetos inanimados.
+
+	Las listas tienen que ser eficientes para eliminar y añadir de forma óptima. 
+
+	Cuando algo no esté en el mundo se eliminará de memoria.
+
+	¿Cómo se hace de grande el mundo?
+
+		Nº límite casillas. Se hace el mundo redondo módulo nº limite casillas;
+
+	Los jugadores PJ's y PNJ's ¿son agentes? Sí, es un sistema multiagente. Cada jugador es autónomo,
+	tiene objetivos propios, es capaz de detectar y actuar, y es temporalmente continuo.
+
+	Cuando hay varios PNJ's ¿quién actúa? Todos.
+
+	¿Cómo son los movimientos? Como el angband (por turnos)
+	Cuando un jugador PJ realiza una acción (solicita realizarla) hay que comprobar si realmente
+	es factible dicha acción, en otro caso no se hará nada (el turno continúa hasta que se haga
+	una acción válida).
+ 		
+	¿Cómo se elige a qué jugador PJ le toca el turno?
+	Hay que establecer un orden. Orden de conexión.
+	Los PNJ's actúan después de cada turno del PJ.
+
+	¿Las acciones de un PJ son visibles a los otros? 
+	Sí. Cada jugador tiene su turno, actúa modificando el mundo y le toca al siguiente.
+	Aunque cada PJ tiene un radio de visión.
+
+	
+(4) ESTRUCTURA
+
+		Armazón: Cliente-Servidor
+		Los clientes o PJ's solicitan jugadas al servidor. Éste verifica que se puedan hacer, 
+		y controla los PNJ's. El servidor modifica el mundo y manda la respuesta a cada PJ. La 
+		inteligencia artificial es llamada desde el servidor y tiene caracter dinámico.
+	
+(5) HERRAMIENTAS DE PROGRAMACIÓN	
+		
+		C/C++ (cliente-servidor), Python (inteligencia artificial), 
+		Librerías gráficas OpenGL (gráficos).
+
+		Todas las cosas dinámicas se harán en Python.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				    

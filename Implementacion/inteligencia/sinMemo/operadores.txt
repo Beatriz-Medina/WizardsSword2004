@@ -1,0 +1,120 @@
+Comer
+tieneCercaComida estaExterior
+comido
+Beber
+tieneCercaAgua estaExterior
+bebido
+Descansar
+vacio
+descansado
+Curarse
+tieneCercaPosadera estaPosada tieneDinero
+curado
+Defenderse
+tieneCercaPersonaje
+defendido
+FinalizarMision
+estaPortal estaCastillo tienePocionObj tieneObjetivo
+incrementadasCarac
+AceptarMision
+tieneDineroBruja tieneCercaBruja estaExterior
+tieneObjetivo
+Estudiar
+tieneCercaBibliotecaria estaBiblioteca tieneDinero
+incrementadosMH
+ComprarArma
+tieneCercaVendedorArmas estaArmas tieneDineroArmas
+tieneArma
+ComprarEscudo
+tieneCercaVendedorEscudos estaEscudos tieneDineroEscudos
+tieneEscudo
+ComprarArmadura
+tieneCercaVendedorArmaduras estaArmaduras tieneDineroArmaduras
+tieneArmadura
+EntrarArmas
+estaExterior tieneDineroArmas tieneCercaArmas 
+estaArmas tieneLejosVendedorArmas
+EntrarEscudos
+estaExterior tieneDineroEscudos tieneCercaEscudos  
+estaEscudos tieneLejosVendedorEscudos
+EntrarArmaduras
+estaExterior tieneDineroArmaduras tieneCercaArmaduras  
+estaArmaduras tieneLejosVendedorArmaduras
+EntrarCastillo
+estaExterior tieneLlave tieneCercaCastillo 
+estaCastillo tieneLejosPortal tieneLejosPrisionero
+EntrarPosada
+estaExterior tieneDinero tieneCercaPosada 
+estaPosada tieneLejosPosadera
+EntrarBiblioteca
+estaExterior tieneDinero tieneCercaBiblioteca 
+estaBiblioteca tieneLejosBibliotecaria
+Salir
+estaInterior estaSalida 
+estaExterior tieneLejosComida tieneLejosAgua tieneCercaBruja
+MoverHaciaComida
+tieneLejosComida
+tieneCercaComida
+MoverHaciaAgua
+tieneLejosAgua
+tieneCercaAgua
+MoverHaciaSalida
+salidaLibre
+estaSalida
+MoverHaciaPosada
+tieneLejosPosada
+tieneCercaPosada
+MoverHaciaPosadera
+tieneLejosPosadera
+tieneCercaPosadera
+MoverHaciaBibliotecaria
+tieneLejosBibliotecaria
+tieneCercaBibliotecaria
+MoverHaciaBruja
+tieneLejosBruja
+tieneCercaBruja
+MoverHaciaCastillo
+tieneLejosCastillo
+tieneCercaCastillo
+MoverHaciaPortal
+tieneLejosPortal
+estaPortal
+MoverHaciaPrisionero
+tieneLejosPrisionero
+tieneCercaPrisionero
+MoverHaciaBiblioteca
+tieneLejosBiblioteca
+tieneCercaBiblioteca
+MoverHaciaArmas
+tieneLejosArmas
+tieneCercaArmas
+MoverHaciaEscudos
+tieneLejosEscudos
+tieneCercaEscudos
+MoverHaciaArmaduras
+tieneLejosArmaduras
+tieneCercaArmaduras
+MoverHaciaVendedorArmas
+tieneLejosVendedorArmas
+tieneCercaVendedorArmas
+MoverHaciaVendedorEscudos
+tieneLejosVendedorEscudos
+tieneCercaVendedorEscudos
+MoverHaciaVendedorArmaduras
+tieneLejosVendedorArmaduras
+tieneCercaVendedorArmaduras
+MoverHaciaCofre
+tieneLejosCofre
+tieneCercaCofre
+MoverHaciaPersonaje
+tieneLejosPersonaje
+tieneCercaPersonaje
+AbrirCofre
+tieneCercaCofre
+tieneDinero tieneDineroArmas tieneDineroEscudos tieneDineroArmaduras tieneDineroBruja tieneLlave tienePocionObj
+Robar
+tieneCercaPersonaje
+tieneDinero tieneDineroArmas tieneDineroEscudos tieneDineroArmaduras tieneDineroBruja tieneLlave tienePocionObj
+LiberarPrisionero
+estaCastillo tieneCercaPrisionero 
+tieneDinero tieneDineroArmas tieneDineroEscudos tieneDineroArmaduras tieneDineroBruja

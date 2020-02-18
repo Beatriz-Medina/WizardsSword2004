@@ -1,0 +1,60 @@
+
+1) Estructura de directorios
+- fonts
+       Incluye un fichero para las fuentes 
+
+- texturas
+	Se descompone a su vez en cinco subdirectorios:
+	   - casillas 
+		Incluye las texturas para los terrenos
+
+	   - edificios
+	         Incluye las texturas para los edificios
+
+	   - menus 
+	         Incluye las texturas para los menús
+
+	   - objetos
+	         Incluye las texturas para los objetos
+
+	   - personajes 
+		 Incluye las texturas para los personajes
+		   
+- mundo
+	Incluye los ficheros Python asociados a la definición del mundo
+
+- inteligencia
+	Se descompone a su vez en dos subdirectorios:
+	   - sinMemo
+		Incluye todos los ficheros Python para definir el
+		comportamiento inteligente sin memoria
+
+	   - conMemo
+		Incluye todos los ficheros Python para definir el
+		comportamiento inteligente con memoria	   
+
+
+Los ficheros C/C++ asociados al cliente/servidor se encuentran en el
+directorio raíz
+
+
+2) Creación del mundo
+Ejecutar el programa creaMundo.py desde el directorio mundo
+
+
+3) Ejecución del servidor
+Ejecutar el programa servidor desde el directorio raíz
+
+
+4) Ejecución de los PJs
+Ejecutar el programa clientePJ desde el directorio raíz
+
+
+5) Ejecución de los PNJs
+Ejecutar el programa clientePNJ.py <raza> <comportamiento> desde el directorio
+inteligencia y el subdirectorio correspondiente (según se quiera utilizar 
+memoria o no)
+
+	donde 
+	      <raza>: 0 (Humano), 1 (Hobbit), 2 (Elfo), 3 (Gigante), 4 (Mono)
+	      <comportamiento>: 0 (reactivo), 1 (deliberativo)
